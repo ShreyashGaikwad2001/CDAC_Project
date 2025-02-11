@@ -1,8 +1,5 @@
-version: "3.9"
-
 services:
   frontend-react:
-    images: parkngo_frontend_react
     build: 
       context: ./FrontEnd/clientside/parkngo_enduser
     ports: 
@@ -13,14 +10,13 @@ services:
       - spring-boot-app
 
   spring-boot-app:
-    image: parkngo-backend-spring
     build:
       context: ./BackEnd/SpringBoot/ParkngoMain
     ports:
       - "9443:9443"
     depends_on:
       - mysql
-      - parkngo_backend_node
+      - node-app
     environment:
       MYSQL_HOST: mysql  # The MySQL service name!
       MYSQL_DATABASE: parkngotest # or parkngo_spring
@@ -31,7 +27,6 @@ services:
   node-app:
     build:
       context: ./BackEnd/projectMailer
-    image: parkngo-backend-node
     ports:
       - "4000:4000"
     depends_on:
@@ -44,7 +39,8 @@ services:
       PORT: 4000
 
   mysql:
-    image: mysql:8.0
+    build:
+      context: ./DB
     environment:
       MYSQL_ROOT_PASSWORD: launch
     volumes:
