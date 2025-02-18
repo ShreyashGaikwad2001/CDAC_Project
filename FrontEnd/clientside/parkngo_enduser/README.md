@@ -1,4 +1,0 @@
-- paymentSuccessScreen
-    - done
-- userReviewScreen
-    - done

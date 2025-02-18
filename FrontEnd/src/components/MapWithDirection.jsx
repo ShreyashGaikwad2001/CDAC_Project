@@ -50,6 +50,80 @@ export default function MapWithDirection({ from, to, setLotData }) {
     [setLotData]
   );
 
+  /*
+			sample results object returned by geocoder api
+			{
+				"results": [
+					{
+					"address_components": [
+						{
+						"long_name": "Mountain View",
+						"short_name": "Mountain View",
+						"types": [
+							"locality",
+							"political"
+						]
+						},
+						{
+						"long_name": "Santa Clara County",
+						"short_name": "Santa Clara County",
+						"types": [
+							"administrative_area_level_2",
+							"political"
+						]
+						},
+						{
+						"long_name": "California",
+						"short_name": "CA",
+						"types": [
+							"administrative_area_level_1",
+							"political"
+						]
+						},
+						{
+						"long_name": "United States",
+						"short_name": "US",
+						"types": [
+							"country",
+							"political"
+						]
+						},
+						{
+						"long_name": "94043",
+						"short_name": "94043",
+						"types": [
+							"postal_code"
+						]
+						}
+					],
+					"formatted_address": "Mountain View, CA 94043, United States",
+					"geometry": {
+						"location": {
+						"lat": 37.399557,
+						"lng": -122.084062
+						},
+						"location_type": "ROOFTOP",
+						"viewport": {
+						"northeast": {
+							"lat": 37.4322437,
+							"lng": -122.0513753
+						},
+						"southwest": {
+							"lat": 37.3668703,
+							"lng": -122.1167487
+						}
+						}
+					},
+					"place_id": "ChIJP3Sa8ziYEmsRUKgyFmh9AQM",
+					"types": [
+						"locality",
+						"political"
+					]
+					}
+				],
+				"status": "OK"
+			}
+   */
   const getCurrentLocation = useCallback(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
